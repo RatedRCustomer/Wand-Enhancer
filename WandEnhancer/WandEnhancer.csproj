@@ -82,6 +82,7 @@
         <Compile Include="Core\Patching\Shared\PeImage.cs" />
         <Compile Include="Core\Patching\Shared\ElectronFuseWire.cs" />
         <Compile Include="Core\Patching\Shared\DiskFusePatch.cs" />
+        <Compile Include="Core\Patching\Shared\AsarHeaderHash.cs" />
         <Compile Include="Core\Patching\Shared\IconTransplant.cs" />
         <Compile Include="Core\Patching\Shared\LauncherDeployment.cs" />
         <Compile Include="Core\Patching\Content\AsarContentPatcher.cs" />
@@ -94,6 +95,8 @@
         <Compile Include="Core\Patching\Strategies\Supervised\SupervisedStrategy.cs" />
         <Compile Include="Core\Patching\Strategies\Static\DotNetImage.cs" />
         <Compile Include="Core\Patching\Strategies\Static\AuxTrustNeutralizer.cs" />
+        <Compile Include="Core\Patching\Strategies\Static\AuxFuseIntegrityNeutralizer.cs" />
+        <Compile Include="Core\Patching\Strategies\Static\AsarIntegrityResourcePatch.cs" />
         <Compile Include="Core\Patching\Strategies\Static\StaticStrategy.cs" />
         <Compile Include="Core\UpdateNotifier.cs" Condition="'$(EnableUpdateNotifications)' == 'true'" />
         <Compile Include="View\Popups\UpdatePopup.xaml.cs" Condition="'$(EnableUpdateNotifications)' == 'true'">
@@ -105,12 +108,15 @@
         <Compile Include="Core\Js\PatchPayload.cs" />
         <Compile Include="Core\Services\LocalizationManager.cs" />
         <Compile Include="Core\Services\SettingsManager.cs" />
+        <Compile Include="Core\Services\UpdateWatcherService.cs" />
+        <Compile Include="Core\Services\WatcherAutostart.cs" />
         <Compile Include="Models\WeModConfig.cs" />
         <Compile Include="Models\PatchConfig.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="ReactiveUICore\ObservableObject.cs" />
         <Compile Include="ReactiveUICore\RelayCommand.cs" />
         <Compile Include="Utils\ProcessTerminator.cs" />
+        <Compile Include="Utils\FileRetry.cs" />
         <Compile Include="Utils\WeModInstalls.cs" />
         <Compile Include="View\Controls\PopupHost.xaml.cs">
           <DependentUpon>PopupHost.xaml</DependentUpon>
@@ -122,6 +128,9 @@
         <Compile Include="View\MainWindow\MainWindowVm.cs" />
         <Compile Include="View\Popups\PatchVectorsPopup.xaml.cs">
           <DependentUpon>PatchVectorsPopup.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="View\Popups\CloseWandConfirmPopup.xaml.cs">
+          <DependentUpon>CloseWandConfirmPopup.xaml</DependentUpon>
         </Compile>
         <Compile Include="View\Popups\SettingsPopup.xaml.cs">
           <DependentUpon>SettingsPopup.xaml</DependentUpon>
@@ -142,12 +151,14 @@
         <Page Include="Locale\lang.uk-UA.xaml" />
         <Page Include="Locale\lang.ja-JP.xaml" />
         <Page Include="Locale\lang.tr-TR.xaml" />
+        <Page Include="Locale\lang.ar-SA.xaml" />
         <Page Include="Style\ColorScheme.xaml" />
         <Page Include="Style\Icons.xaml" />
         <Page Include="Style\Styles.xaml" />
         <Page Include="View\Controls\PopupHost.xaml" />
         <Page Include="View\MainWindow\MainWindow.xaml" />
         <Page Include="View\Popups\PatchVectorsPopup.xaml" />
+        <Page Include="View\Popups\CloseWandConfirmPopup.xaml" />
         <Page Include="View\Popups\UpdatePopup.xaml" Condition="'$(EnableUpdateNotifications)' == 'true'" />
         <Page Include="View\Popups\SettingsPopup.xaml" />
     </ItemGroup>

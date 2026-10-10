@@ -10,6 +10,7 @@ import {
     type RemoteSessionState,
     remoteSessionReducer,
 } from './remote-session.reducer';
+import { readInitialPairingToken } from './remote-session.urls';
 import { selectIsConnected, selectPendingTargets } from './selectors';
 
 const RECONNECT_BASE_DELAY_MS = 2000;
@@ -28,6 +29,7 @@ export function useRemoteSession() {
     // True if user disconnected intentionally; prevents auto-reconnect on refocus.
     const userDisconnectedRef = useRef(false);
     const connectRef = useRef<() => void>(() => {});
+    const pairingTokenRef = useRef(readInitialPairingToken());
     useEffect(() => {
         stateRef.current = state;
     }, [state]);
@@ -70,7 +72,7 @@ export function useRemoteSession() {
             return;
         }
 
-        const client = new RemoteSessionClient(wsUrl, {
+        const client = new RemoteSessionClient(wsUrl, pairingTokenRef.current, {
             onConnecting: () =>
                 dispatch({
                     type: 'connecting',
